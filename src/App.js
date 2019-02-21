@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.socket = new WebSocket('https://roket-cet2-server.herokuapp.com')
+    this.socket = new WebSocket('ws://roket-cet2-server.herokuapp.com')
     this.socket.onopen = this.connect
     this.socket.onmessage = this.onMessage.bind(this)
   } 
