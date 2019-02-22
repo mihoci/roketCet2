@@ -1,12 +1,15 @@
 .App {
   text-align: center;
+  margin: 0;
 }
 
 .messages {
+  display: flex;
+  flex-direction: column-reverse;
+  text-align: left;
+  margin: 0 auto;
   width: 800px;
   height: 300px;
-  border: 5px solid salmon;
-  margin: 0 auto;
-  text-align: left;
   overflow-y: scroll;
+  border: 5px solid olivedrab;
 }

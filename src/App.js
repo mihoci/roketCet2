@@ -14,6 +14,7 @@ class App extends Component {
   }
 
   componentWillMount() {
+    //wss://roket-cet2-server.herokuapp.com
     this.socket = new WebSocket('wss://roket-cet2-server.herokuapp.com')
     this.socket.onopen = this.connect
     this.socket.onmessage = this.onMessage.bind(this)
@@ -30,7 +31,7 @@ class App extends Component {
       this.setState({messages: data})
     }else{
       let msgs = this.state.messages
-      msgs.push(data)
+      msgs.unshift(data)
       this.setState({messages: msgs})
     }
     console.log(this.state.messages)
