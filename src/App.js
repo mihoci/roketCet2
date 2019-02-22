@@ -9,6 +9,7 @@ class App extends Component {
     super()
     this.state = {
       user: '',
+      message: '',
       messages: [],
     }
   }
@@ -42,13 +43,13 @@ class App extends Component {
   }
 
   handleSubmit(e){
-    if(e.key === 'Enter' && e.target.value !== ''){
+    if((e.key === 'Enter' && e.target.value !== '') || e.target.type === 'submit'){
       const msg = {
         user: this.state.user,
-        message: e.target.value
+        message: this.state.message
       }
       this.socket.send(JSON.stringify(msg))
-      e.target.value='';
+      this.setState({message: ''})
     }
   }
 
@@ -64,9 +65,10 @@ class App extends Component {
             onKeyPress={this.handleSubmit.bind(this)} 
             className="Message" 
             placeholder="Your message here"
-
+            value={this.state.message}
+            onChange={(e)=> this.setState({message: e.target.value})}
           />
-          <input type="submit" value="Send" />
+          <input type="submit" value="Send" onClick={this.handleSubmit.bind(this)}/>
         </Display>
         <Display if={this.state.user === ''}>
           <Login setUser={this.setUser.bind(this)}/>

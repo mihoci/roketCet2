@@ -10,7 +10,6 @@ class Messages extends React.Component{
     }
 
     render(){
-        console.log(this.props.messages)
         return(
             <div>
                 <h2>Messages</h2>
