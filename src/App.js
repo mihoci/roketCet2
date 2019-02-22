@@ -9,14 +9,15 @@ class App extends Component {
     super()
     this.state = {
       user: '',
-      messages: []
+      messages: [],
     }
   }
 
   componentWillMount() {
-    this.socket = new WebSocket('ws://roket-cet2-server.herokuapp.com')
+    this.socket = new WebSocket('wss://roket-cet2-server.herokuapp.com')
     this.socket.onopen = this.connect
     this.socket.onmessage = this.onMessage.bind(this)
+
   } 
 
   connect(){
@@ -25,7 +26,6 @@ class App extends Component {
 
   onMessage(msg){
     const data = JSON.parse(msg.data)
-    console.log(data)
     if(Array.isArray(data)){
       this.setState({messages: data})
     }else{
