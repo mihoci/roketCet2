@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Login from './components/Login'
 import Display from './components/Display'
 import Messages from './components/Messages'
+import Header from './components/header/Header'
 import './App.css';
 
 class App extends Component {
@@ -14,20 +15,13 @@ class App extends Component {
     }
   }
 
-  componentWillMount() {
-    //wss://roket-cet2-server.herokuapp.com
-    this.socket = new WebSocket('wss://roket-cet2-server.herokuapp.com')
-    this.socket.onopen = this.connect
-    this.socket.onmessage = this.onMessage.bind(this)
-
-  } 
-
   connect(){
     console.log('connected')
   }
 
   onMessage(msg){
     const data = JSON.parse(msg.data)
+    console.log(data)
     if(Array.isArray(data)){
       this.setState({messages: data})
     }else{
@@ -35,11 +29,14 @@ class App extends Component {
       msgs.unshift(data)
       this.setState({messages: msgs})
     }
-    console.log(this.state.messages)
   }
 
   setUser(user){
     this.setState({user: user})
+    //wss://roket-cet2-server.herokuapp.com
+    this.socket = new WebSocket('ws://localhost:5001')
+    this.socket.onopen = this.connect
+    this.socket.onmessage = this.onMessage.bind(this)
   }
 
   handleSubmit(e){
@@ -55,24 +52,26 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>RoketČet2</h1>
-        <Display if={this.state.user !== ''}>
-          <h2>User: {this.state.user}</h2>
-          <Messages messages={this.state.messages}/>
-          <input 
-            type="text" 
-            onKeyPress={this.handleSubmit.bind(this)} 
-            className="Message" 
-            placeholder="Your message here"
-            value={this.state.message}
-            onChange={(e)=> this.setState({message: e.target.value})}
-          />
-          <input type="submit" value="Send" onClick={this.handleSubmit.bind(this)}/>
-        </Display>
-        <Display if={this.state.user === ''}>
-          <Login setUser={this.setUser.bind(this)}/>
-        </Display>
+      <div>
+        <Header user={this.state.user} setUser={this.setUser.bind(this)}/>
+        <div className="App">
+          <Display if={this.state.user !== ''}>
+            <h2>User: {this.state.user}</h2>
+            <Messages messages={this.state.messages}/>
+            <input 
+              type="text" 
+              onKeyPress={this.handleSubmit.bind(this)} 
+              className="Message" 
+              placeholder="Your message here"
+              value={this.state.message}
+              onChange={(e)=> this.setState({message: e.target.value})}
+            />
+            <input type="submit" value="Send" onClick={this.handleSubmit.bind(this)}/>
+          </Display>
+          <Display if={this.state.user === ''}>
+            <Login setUser={this.setUser.bind(this)}/>
+          </Display>
+        </div>
       </div>
     );
   }
