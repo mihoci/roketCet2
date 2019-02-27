@@ -17,16 +17,26 @@ class App extends Component {
 
   connect(){
     console.log('connected')
+    this.socket.send(JSON.stringify({username: this.state.user}))
   }
 
   onMessage(msg){
     const data = JSON.parse(msg.data)
-    console.log(data)
-    if(Array.isArray(data))   {
+
+    //check type of message
+    if(Array.isArray(data)){
       const arr = data.map(msg => {
         return JSON.parse(msg)
       })
       this.setState({messages: arr})
+
+    }else if(data.users){
+      console.log(data.users);
+
+    }else if(data.err === 'user exists'){
+      alert('User with that name already exists')
+      this.setState({user: ''})
+
     }else{
       let msgs = this.state.messages
       msgs.unshift(data)
@@ -38,7 +48,7 @@ class App extends Component {
     this.setState({user: user})
     //wss://roket-cet2-server.herokuapp.com
     this.socket = new WebSocket('ws://localhost:5001')
-    this.socket.onopen = this.connect
+    this.socket.onopen = this.connect.bind(this)
     this.socket.onmessage = this.onMessage.bind(this)
   }
 
