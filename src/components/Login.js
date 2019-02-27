@@ -16,7 +16,7 @@ class Login extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className="limiter">
                 <form onSubmit={this.handleLogin.bind(this)}>
                     <label>
                         username: 

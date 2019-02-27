@@ -56,7 +56,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header user={this.state.user} setUser={this.setUser.bind(this)}/>
+        {/* <Header user={this.state.user} setUser={this.setUser.bind(this)}/> */}
         <div className="App">
           <Display if={this.state.user !== ''}>
             <h2>User: {this.state.user}</h2>
