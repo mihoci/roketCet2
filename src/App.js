@@ -22,8 +22,11 @@ class App extends Component {
   onMessage(msg){
     const data = JSON.parse(msg.data)
     console.log(data)
-    if(Array.isArray(data)){
-      this.setState({messages: data})
+    if(Array.isArray(data))   {
+      const arr = data.map(msg => {
+        return JSON.parse(msg)
+      })
+      this.setState({messages: arr})
     }else{
       let msgs = this.state.messages
       msgs.unshift(data)
