@@ -27,7 +27,7 @@ class Login extends React.Component {
 								<div className="cadre-login">
 									<Tilt className="Tilt" options={{ max: 35 }} style={{ height: 177, }} >
 										<p className="naslov-login">ROKET ČET</p>
-										<img className="login-img" src={img} />
+										<img className="login-img" src={img} alt="login-img" />
 										<p className="login-text">TIM SPARTA</p>
 									</Tilt>
 								</div>
