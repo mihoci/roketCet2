@@ -10,33 +10,48 @@ class App extends Component {
     super()
     this.state = {
       user: '',
+      users: [],
       message: '',
       messages: [],
     }
+
   }
 
-  connect(){
-    console.log('connected')
+  componentDidMount(){
+        //wss://roket-cet2-server.herokuapp.com
+        this.socket = new WebSocket('ws://localhost:5001')
+        this.socket.onmessage = this.onMessage.bind(this)
+
+  }
+
+  setUser(user){
+    this.setState({user: user})
+    if(user !== ''){
+      this.socket.send(JSON.stringify({setUser: user}))
+    }
+
   }
 
   onMessage(msg){
     const data = JSON.parse(msg.data)
     console.log(data)
-    if(Array.isArray(data)){
+
+    //check type of message
+    if(Array.isArray(data) && data[0].message){
+      //chat messages
       this.setState({messages: data})
+
+    }else if(Array.isArray(data)){
+      //array of users
+      this.setState({users: data})
+
     }else{
+      //chat message
       let msgs = this.state.messages
       msgs.unshift(data)
       this.setState({messages: msgs})
     }
-  }
 
-  setUser(user){
-    this.setState({user: user})
-    //wss://roket-cet2-server.herokuapp.com
-    this.socket = new WebSocket('ws://localhost:5001')
-    this.socket.onopen = this.connect
-    this.socket.onmessage = this.onMessage.bind(this)
   }
 
   handleSubmit(e){
@@ -48,6 +63,7 @@ class App extends Component {
       this.socket.send(JSON.stringify(msg))
       this.setState({message: ''})
     }
+
   }
 
   render() {
