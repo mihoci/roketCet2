@@ -18,17 +18,9 @@ class App extends Component {
   }
 
   componentDidMount(){
-        //wss://roket-cet2-server.herokuapp.com
-        this.socket = new WebSocket('ws://localhost:5001')
-        this.socket.onmessage = this.onMessage.bind(this)
-
-  }
-
-  setUser(user){
-    this.setState({user: user})
-    if(user !== ''){
-      this.socket.send(JSON.stringify({setUser: user}))
-    }
+    //wss://roket-cet2-server.herokuapp.com
+    this.socket = new WebSocket('ws://localhost:5001')
+    this.socket.onmessage = this.onMessage.bind(this)
 
   }
 
@@ -54,15 +46,16 @@ class App extends Component {
 
   }
 
-  handleSubmit(e){
-    if((e.key === 'Enter' && e.target.value !== '') || e.target.type === 'submit'){
-      const msg = {
-        user: this.state.user,
-        message: this.state.message
-      }
-      this.socket.send(JSON.stringify(msg))
-      this.setState({message: ''})
+  setUser(user){
+    this.setState({user: user})
+    if(user !== ''){
+      this.socket.send(JSON.stringify({setUser: user}))
     }
+
+  }
+
+  sendMessage(msg){
+    this.socket.send(JSON.stringify(msg))
 
   }
 
@@ -72,17 +65,7 @@ class App extends Component {
         <Header user={this.state.user} setUser={this.setUser.bind(this)}/>
         <div className="App">
           <Display if={this.state.user !== ''}>
-            <h2>User: {this.state.user}</h2>
-            <Messages messages={this.state.messages}/>
-            <input 
-              type="text" 
-              onKeyPress={this.handleSubmit.bind(this)} 
-              className="Message" 
-              placeholder="Your message here"
-              value={this.state.message}
-              onChange={(e)=> this.setState({message: e.target.value})}
-            />
-            <input type="submit" value="Send" onClick={this.handleSubmit.bind(this)}/>
+            <Messages messages={this.state.messages} user={this.state.user} sendMessage={this.sendMessage.bind(this)}/>
           </Display>
           <Display if={this.state.user === ''}>
             <Login setUser={this.setUser.bind(this)}/>
