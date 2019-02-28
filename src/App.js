@@ -12,10 +12,7 @@ class App extends Component {
 			users: [],
 			messages: [],
 		}
-	}
 
-	connect() {
-		console.log('connected')
 	}
 
 	onMessage(msg) {
@@ -42,17 +39,18 @@ class App extends Component {
 		}
 	}
 
-	setUser(user) {
-		this.setState({ user: user })
-		//wss://roket-cet2-server.herokuapp.com
-		this.socket = new WebSocket('ws://localhost:5001')
-		this.socket.onopen = this.connect.bind(this)
-		this.socket.onmessage = this.onMessage.bind(this)
+	componentDidMount(){
+	//wss://roket-cet2-server.herokuapp.com
+	this.socket = new WebSocket('ws://localhost:5001')
+	this.socket.onmessage = this.onMessage.bind(this)
 
 	}
 
-	componentDidMount() {
-		this.setUser('user')
+	setUser(user){
+		this.setState({user: user})
+		if(user !== ''){
+		this.socket.send(JSON.stringify({username: user}))
+		}
 
 	}
 
