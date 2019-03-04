@@ -12,3 +12,308 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.limiter {
+  width: 100%;
+  margin: 0 auto;
+}
+.container-login {
+  width: 100%;  
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+	padding: 15px;
+	background-color: #e8eceb;
+}
+.wrap-login{
+    width: 660px;
+    background: #fff;
+    overflow: hidden; 
+		justify-content: space-between;
+		border-radius: 3px;
+		 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.leftDesign{
+	height: 400px;
+    background-color: #59A5EA;
+}
+.cadre-login{
+	    margin-left: 50px;
+    margin-right: 50px;
+		margin-top: 60px;
+			text-align: center;
+}
+.cadre-login-right{
+	margin-left: 50px;
+    margin-right: 50px;
+		margin-top: 123px;
+	
+}
+.naslov-login{
+font-size: 34px;
+    text-align: center;
+    color: #FDFDFD;
+}
+.naslov-login-poruka{
+	font-size: 30px;
+		text-align: center;
+		font-weight: bold;
+color: #1F1546;;
+}
+.form-control-login{
+	line-height: 1.2;
+    color: #686868;
+    display: block;
+    width: 100%;
+    background: #e6e6e6;
+    height: 32px;
+    border-radius: 3px;
+    padding: 0px 0px 0 30px;
+    border: 0px solid #ced4da;
+}
+.btn-login{
+		margin-top: 23px;
+    color: #fff;
+		background-color: #59a5ea;
+    border-color: #59a5ea;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 30px;
+    /* text-align: center; */
+    padding-left: 30px;
+    border-radius: 3px;
+}
+.btn-login:hover{
+    background-color: #28a745;
+    border-color: #28a745;
+}
+.login-img{
+	  height: 177px;
+   
+}
+.login-text{
+	  font-size: 10px;
+		color: white;
+		padding-top: 15px;
+}
+
+.login100-pic img {
+  max-width: 100%;
+}
+.naslov-login-ime{
+	display: none;
+}
+
+@media (max-width: 768px) { 
+	.leftDesign{
+		display: none;
+	}
+	.cadre-login-right{
+		margin-top: 50px;
+	}
+	.container-login100-form-btn{
+		margin-bottom: 50px;
+	}
+	.naslov-login-ime{
+		display: block;
+		font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+    color: #59a5ea;
+	}
+	.naslov-login-poruka {
+		font-size: 20px;
+	}
+ }
+ /*messages*/
+
+ .background-left{
+	  background-color: #24344B;
+		
+ }
+ .framework-messenger{
+	 display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 156px;
+		margin-top: 25px;
+		font-size: 20px;
+ }
+.icon-users{
+background-color: #44C9C2;
+    text-align: center;
+    width: 30px;
+    border-radius: 5px;
+		color: white;
+		float: left;
+}
+.user-you{
+	padding-left: 10px;
+		color: white;
+		font-weight: bold;
+}
+.search-bar-user{
+	    margin-top: 15px;
+    line-height: 1.0;
+    color: #686868;
+    display: block;
+    background: #ffffff;
+    height: 40px;
+    border-radius: 20px;
+    padding: 0px 0px 0 15px;
+		border: 0px solid #ced4da;
+		font-size: 15px;
+}
+.name-tria{
+	font-weight: bold;
+    color: #59A5EA;
+    font-size: 25px;
+		margin-top: 15px;
+		padding-left: 20px;
+}
+.pn{
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+		/*background-color: #F7F7F7;*/
+}
+.header-messenger{
+	    background-color: white;
+	    border-bottom: 1px solid #E8ECEB;
+}
+
+.messenger-bottom{
+    margin-right: auto;
+    margin-left: auto;
+		margin-bottom: 20px;
+   
+}
+.message{
+	    line-height: 1.0;
+    color: #686868;
+    display: block;
+    width: 100%;
+    background: #ffffff;
+    height: 44px;
+    border-radius: 20px;
+    padding: 0px 0px 0 30px;
+    border: 0px solid #ced4da;
+    font-size: 15px;
+		border: 1px solid #e8e8e8;
+	
+}
+.postion-bottom{
+/*	position: absolute !important;*/
+	bottom: 0;
+}
+
+.messenger {
+
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    text-align: left;
+    margin: 0 auto;
+    height: 85vh;
+    overflow-y: scroll;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    background-color: #ffff;
+    border-radius: .25rem;
+}
+
+
+.search-bar-messenger{
+	margin-top: 15px;
+	line-height: 1.0;
+	color: #686868;
+	display: block;
+	width: 200px;
+	background: #ffffff;
+	height: 40px;
+	border-radius: 20px;
+	padding: 0px 0px 0 30px;
+	border: 0px solid #ced4da;
+	font-size: 15px;
+	border: 1px solid #e8e8e8;
+	float: right;
+	margin-right: 15px;
+}
+
+@media (max-width: 767px) {
+	.search-bar-messenger {
+		margin-bottom: 10px;
+    margin-right: auto;
+		margin-left: auto;
+		float: none;
+	}
+	.name-tria {
+		text-align: center;
+	}
+ }
+/*menu*/
+@media (min-width: 768px) {
+	.btn-toggle-nav{
+		display: none;
+	}
+}
+
+@media (max-width: 799px) {
+	.btn-toggle-nav {
+      width: 60px;
+    height: 60px;
+    background-color: #ffffff;
+    background-image: url(http://localhost:3000/static/media/menu.87f2b25c.png);
+    background-repeat: no-repeat;
+    background-size: 46%;
+    background-position: center;
+    cursor: pointer;
+    left: 0;
+    z-index: 101;
+    position: absolute;
+}
+	.framework-messenger{
+		width: 156px;
+			margin-top: 82px;
+			font-size: 20px;
+			float: left;
+	}
+	.messenger-open{
+		display: block;
+	}
+	.messenger-close{
+		display: none;
+	}
+	.every-messenger-open{
+		display: none;
+	}
+	.every-messenger-close{
+		display: block;
+	}
+	.height-close{
+		height: 60px !important;
+	}
+	.height-open{
+		height: 100vh !important;
+	}
+	.messenger{
+		height: 55vh;
+	}
+	
+ }
+ @media (max-width: 992px) { 
+	 .search-bar-user{
+		padding: 0 0 0 5px;
+	}
+  }
+ 	
