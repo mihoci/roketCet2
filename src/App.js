@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Login from './components/Login'
 import Display from './components/Display'
 import Messages from './components/Messages'
-import './App.css';
 
 class App extends Component {
 	constructor() {
