@@ -2,10 +2,80 @@ import React, { Component } from 'react'
 import Login from './components/Login'
 import Display from './components/Display'
 import Messages from './components/Messages'
-import Header from './components/header/Header'
-import './App.css';
 
 class App extends Component {
+<<<<<<< HEAD
+	constructor() {
+		super()
+		this.state = {
+			user: '',
+			users: [],
+			messages: [],
+		}
+	}
+
+	connect() {
+		console.log('connected')
+	}
+
+	onMessage(msg) {
+		const data = JSON.parse(msg.data)
+
+		//check type of message
+		if (Array.isArray(data)) {
+			const arr = data.map(msg => {
+				return JSON.parse(msg)
+			})
+			this.setState({ messages: arr })
+
+		} else if (data.users) {
+			console.log(data.users);
+
+		} else if (data.err === 'user exists') {
+			alert('User with that name already exists')
+			this.setState({ user: '' })
+
+		} else {
+			let msgs = this.state.messages
+			msgs.unshift(data)
+			this.setState({ messages: msgs })
+		}
+	}
+
+	setUser(user) {
+		this.setState({ user: user })
+		//wss://roket-cet2-server.herokuapp.com
+		this.socket = new WebSocket('ws://localhost:5001')
+		this.socket.onopen = this.connect.bind(this)
+		this.socket.onmessage = this.onMessage.bind(this)
+
+	}
+
+	componentDidMount() {
+		this.setUser('user')
+
+	}
+
+	handleSubmit(msg) {
+		this.socket.send(JSON.stringify(msg))
+	}
+
+	render() {
+		return (
+			<div>
+
+				<Display if={this.state.user !== ''}>
+					<Messages messages={this.state.messages} user={this.state.user} handleSubmit={this.handleSubmit.bind(this)} />
+				</Display>
+				<Display if={this.state.user === ''}>
+					<Login setUser={this.setUser.bind(this)} />
+				</Display>
+			</div>
+
+
+		);
+	}
+=======
   constructor(){
     super()
     this.state = {
@@ -74,6 +144,7 @@ class App extends Component {
       </div>
     );
   }
+>>>>>>> 80c608a34f06bfbfcf5fcbda0777f26fca03286e
 }
 
 export default App;
