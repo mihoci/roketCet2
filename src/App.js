@@ -35,7 +35,7 @@ class App extends Component {
 
   render() {
     return (
-        <div className="App">
+        <div>
           <Display if={this.state.user !== '' && this.state.userid >= 0}>
             <Messages nats={this.nats} user={this.state.user} id={this.state.userid}/>
           </Display>
