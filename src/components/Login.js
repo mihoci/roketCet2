@@ -4,11 +4,10 @@ import Tilt from 'react-tilt'
 
 
 class Login extends React.Component {
-	constructor(props) {
-		super(props)
+	constructor() {
+		super()
 		this.state = {
 			username: '',
-			password: ''
 		}
 	}
 

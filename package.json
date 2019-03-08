@@ -5,14 +5,11 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "pg": "^7.8.1",
-    "queue": "^6.0.0",
     "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "react-native-drawer": "^2.5.1",
+    "react-dom": "^16.8.4",
     "react-scripts": "2.1.5",
     "react-tilt": "^0.1.4",
-    "redis": "^2.8.0",
-    "ws": "^6.1.4"
+    "websocket-nats": "^0.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -29,7 +26,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-    "nodemon": "^1.18.10"
-  }
+  "devDependencies": {}
 }
