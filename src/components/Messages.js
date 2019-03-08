@@ -1,10 +1,7 @@
 import React from 'react'
-//import ScrollableFeed from 'react-scrollable-feed'
 import ReactDOM from 'react-dom';
 import StyleMessages from './StyleMessages'
-
 import img from '../menu.png'
-
 
 class Messages extends React.Component {
 	constructor(props) {
